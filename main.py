@@ -1,11 +1,12 @@
 
 def search(nums, target):
   pivot=-1
+  #finding the pivot
   for i in range(1,len(nums)):
       if nums[i-1]>nums[i]:
           pivot = i-1
           break
-      
+   #if non exists just do a normal binary search  
   if pivot==-1:
       start=0
       end=len(nums)
@@ -20,6 +21,7 @@ def search(nums, target):
           else:
               return mid
       return -1
+   # if one exists use last element to decide which array to search in. i.e if target is less or equal to last element, search in last array
   elif target<=nums[-1]:
       start=pivot
       end=len(nums)
@@ -34,6 +36,7 @@ def search(nums, target):
           else:
               return mid
       return -1
+   # search in first array if target greater than last element
   else:
       start=0
       end=pivot+1
